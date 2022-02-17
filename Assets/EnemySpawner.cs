@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
             Quaternion rotation = Quaternion.identity;
 
 
+            Debug.Log("Enemy spawed at : " + position.ToString());
             GameObject go = Instantiate(enemyPrefab, position, rotation);
         }
 
@@ -26,9 +27,5 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-// Update is called once per frame
-void Update()
-    {
-        
-    }
+
 }

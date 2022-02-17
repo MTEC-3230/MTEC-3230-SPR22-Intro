@@ -27,7 +27,14 @@ public class Enemy : MonoBehaviour
 
         float randomStartTime = Random.Range(0, 10f);
         float randomRepeatTime = Random.Range(2, 6); 
-        InvokeRepeating("MoveToRandomPosition", randomStartTime, randomRepeatTime); 
+        InvokeRepeating("MoveToRandomPosition", randomStartTime, randomRepeatTime);
+
+        Renderer rend;
+        rend = this.gameObject.GetComponent<Renderer>();
+
+        rend.material.color = GetRandomColor();
+
+        newPosition = this.transform.position;
     }
 
     // Update is called once per frame
@@ -58,6 +65,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        MoveToRandomPosition();
+    }
 
 
     // Handles Enemy Movement
@@ -68,5 +79,12 @@ public class Enemy : MonoBehaviour
         newPosition = new Vector3(Random.Range(-10, 10), 1.0f, Random.Range(-10, 10));
         journeyLength = Vector3.Distance(this.transform.position, newPosition);
 
+    }
+
+
+    Color GetRandomColor()
+    {
+
+        return new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
     }
 }
