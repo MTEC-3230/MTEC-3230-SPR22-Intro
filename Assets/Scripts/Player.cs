@@ -13,6 +13,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetAxis("Horizontal") >0)
+        {
+            // DO Something
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
+
+
+
     }
 }
